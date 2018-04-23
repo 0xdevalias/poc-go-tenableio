@@ -33,7 +33,7 @@ type AssetVulnerabilities struct {
 
 // Ref: https://cloud.tenable.com/api#/resources/workbenches/asset-vulnerability-info
 type AssetVulnInfo struct {
-	Info []VulnerabilityInfo `json:"info"`
+	Info VulnerabilityInfo `json:"info"`
 }
 
 // Ref: https://cloud.tenable.com/api#/resources/workbenches/asset-vulnerability-output
@@ -63,14 +63,19 @@ type Vulnerability struct {
 //   Ref: https://cloud.tenable.com/api#/resources/workbenches
 // TODO: Finish the VulnerabilityInfo struct
 type VulnerabilityInfo struct {
-	Description              string        `json:"description"`
-	Discovery                interface{}   `json:"discovery"`
-	PluginDetails            interface{}   `json:"plugin_details"`
-	ReferenceInformation     interface{}   `json:"reference_information"`
-	RiskInformation          interface{}   `json:"risk_information"`
-	SeeAlso                  []interface{} `json:"see_also"`
-	Solution                 string        `json:"solution"`
-	VulnerabilityInformation interface{}   `json:"vulnerability_information"`
+	Description              string                   `json:"description"`
+	Discovery                interface{}              `json:"discovery"`
+	PluginDetails            interface{}              `json:"plugin_details"`
+	ReferenceInformation     interface{}              `json:"reference_information"`
+	RiskInformation          interface{}              `json:"risk_information"`
+	SeeAlso                  []interface{}            `json:"see_also"`
+	Solution                 string                   `json:"solution"`
+	VulnerabilityInformation VulnerabilityInformation `json:"vulnerability_information"`
+}
+
+// TODO: Finish implementing this..
+type VulnerabilityInformation struct {
+	CPE []string `json:"cpe"`
 }
 
 // vulnerability_output
