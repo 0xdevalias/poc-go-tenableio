@@ -6,6 +6,45 @@ type Filter struct {
 	Value   string `json:"value"`
 }
 
+// Ref: https://cloud.tenable.com/api#/resources/plugins
+type PluginFamilies struct {
+	Families []PluginFamily `json:"families"`
+}
+
+// Ref: https://cloud.tenable.com/api#/resources/plugins
+type PluginFamily struct {
+	ID    int    `json:"id"`
+	Name  string `json:"name"`
+	Count int    `json:"count"`
+}
+
+// Ref: https://cloud.tenable.com/api#/resources/plugins/family-details
+type PluginFamilyDetails struct {
+	ID      int      `json:"id"`
+	Name    string   `json:"name"`
+	Plugins []Plugin `json:"plugins"`
+}
+
+// Ref: https://cloud.tenable.com/api#/resources/plugins
+type Plugin struct {
+	ID   int    `json:"id"`
+	Name string `json:"name"`
+}
+
+// Ref: https://cloud.tenable.com/api#/resources/plugins/plugin-details
+type PluginDetails struct {
+	ID         int                `json:"id"`
+	Name       string             `json:"name"`
+	FamilyName string             `json:"family_name"`
+	Attributes []PluginAttributes `json:"attributes"`
+}
+
+// Ref: https://cloud.tenable.com/api#/resources/plugins
+type PluginAttributes struct {
+	Name  string `json:"attribute_name"`
+	Value string `json:"attribute_value"`
+}
+
 // Ref: https://cloud.tenable.com/api#/resources/workbenches/assets
 type Assets struct {
 	Assets []Asset `json:"assets"`
