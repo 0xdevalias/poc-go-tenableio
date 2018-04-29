@@ -112,9 +112,24 @@ type VulnerabilityInfo struct {
 	VulnerabilityInformation VulnerabilityInformation `json:"vulnerability_information"`
 }
 
-// TODO: Finish implementing this..
+// vulnerability_info
+//   Ref: https://cloud.tenable.com/api#/resources/workbenches
 type VulnerabilityInformation struct {
-	CPE []string `json:"cpe"`
+	CPE                  []string `json:"cpe"`
+	VulnPublicationDate  string   `json:"vulnerability_publication_date"`
+	PatchPublicationDate string   `json:"patch_publication_date"`
+	UnsupportedByVendor  bool     `json:"unsupported_by_vendor"`
+
+	// TODO: Finish implementing this..
+	ExploitAvailable   interface{} `json:"exploit_available"`
+	ExploitabilityEase interface{} `json:"exploitability_ease"`
+	ExploitedByMalware interface{} `json:"exploited_by_malware"`
+	ExploitedByNessus  interface{} `json:"exploited_by_nessus"`
+	ExploitFrameworks  interface{} `json:"exploit_frameworks"`
+	AssetInventory     interface{} `json:"asset_inventory"`
+	DefaultAccount     interface{} `json:"default_account"`
+	InTheNews          interface{} `json:"in_the_news"`
+	Malware            interface{} `json:"malware"`
 }
 
 // vulnerability_output
