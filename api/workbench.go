@@ -5,7 +5,21 @@ import "fmt"
 func (c *WorkbenchesAPI) WithFilters(filters ...Filter) *WorkbenchesAPI {
 	return &WorkbenchesAPI{
 		client:              c.client,
-		commonFilterHelpers: c.commonFilterHelpers.WithFilters(filters...),
+		CommonFilterHelpers: c.CommonFilterHelpers.WithFilters(filters...),
+	}
+}
+
+func (c *WorkbenchesAPI) WithSearchType(st FilterSearchType) *WorkbenchesAPI {
+	return &WorkbenchesAPI{
+		client:              c.client,
+		CommonFilterHelpers: c.CommonFilterHelpers.WithSearchType(st),
+	}
+}
+
+func (c *WorkbenchesAPI) WithDateRange(numDaysIncluded int) *WorkbenchesAPI {
+	return &WorkbenchesAPI{
+		client:              c.client,
+		CommonFilterHelpers: c.CommonFilterHelpers.WithDateRange(numDaysIncluded),
 	}
 }
 
@@ -15,7 +29,7 @@ func (c *WorkbenchesAPI) Assets() (*Assets, error) {
 	req := c.client.restyClient.R().
 		SetResult(Assets{})
 
-	c.applyCommonFilters(req)
+	c.ApplyCommonFilters(req)
 
 	r, err := req.Get("/workbenches/assets")
 	if err != nil {
@@ -37,7 +51,7 @@ func (c *WorkbenchesAPI) AssetVulns(assetID string) (*AssetVulnerabilities, erro
 		SetPathParams(map[string]string{"asset_id": assetID}).
 		SetResult(AssetVulnerabilities{})
 
-	c.applyCommonFilters(req)
+	c.ApplyCommonFilters(req)
 
 	r, err := req.Get("/workbenches/assets/{asset_id}/vulnerabilities")
 	if err != nil {
@@ -62,7 +76,7 @@ func (c *WorkbenchesAPI) AssetVulnInfo(assetID string, pluginID int) (*AssetVuln
 		}).
 		SetResult(AssetVulnInfo{})
 
-	c.applyCommonFilters(req)
+	c.ApplyCommonFilters(req)
 
 	r, err := req.Get("/workbenches/assets/{asset_id}/vulnerabilities/{plugin_id}/info")
 	if err != nil {
@@ -87,7 +101,7 @@ func (c *WorkbenchesAPI) AssetVulnOutput(assetID string, pluginID int) (*AssetVu
 		}).
 		SetResult(AssetVulnOutputs{})
 
-	c.applyCommonFilters(req)
+	c.ApplyCommonFilters(req)
 
 	r, err := req.Get("/workbenches/assets/{asset_id}/vulnerabilities/{plugin_id}/outputs")
 	if err != nil {

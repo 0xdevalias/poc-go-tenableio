@@ -22,7 +22,7 @@ type PluginsAPI struct{ client *Client }
 type WorkbenchesAPI struct {
 	client *Client
 
-	commonFilterHelpers
+	CommonFilterHelpers
 }
 
 func DefaultClient(accessKey string, secretKey string) *Client {
