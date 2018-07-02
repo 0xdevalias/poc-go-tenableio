@@ -26,7 +26,7 @@ type WorkbenchesAPI struct {
 }
 
 func DefaultClient(accessKey string, secretKey string) *Client {
-	c := resty.DefaultClient
+	c := resty.New()
 	c.SetHostURL(BaseUrl)
 	c.SetHeader("X-ApiKeys", fmt.Sprintf("accessKey=%s; secretKey=%s", accessKey, secretKey))
 
