@@ -1,5 +1,7 @@
 package api
 
+import "time"
+
 type Filter struct {
 	Filter  string `json:"filter"`
 	Quality string `json:"quality"`
@@ -115,10 +117,10 @@ type VulnerabilityInfo struct {
 // vulnerability_info
 //   Ref: https://cloud.tenable.com/api#/resources/workbenches
 type VulnerabilityInformation struct {
-	CPE                  []string `json:"cpe"`
-	VulnPublicationDate  string   `json:"vulnerability_publication_date"`
-	PatchPublicationDate string   `json:"patch_publication_date"`
-	UnsupportedByVendor  bool     `json:"unsupported_by_vendor"`
+	CPE                  []string   `json:"cpe"`
+	VulnPublicationDate  *time.Time `json:"vulnerability_publication_date"`
+	PatchPublicationDate *time.Time `json:"patch_publication_date"`
+	UnsupportedByVendor  bool       `json:"unsupported_by_vendor"`
 
 	// TODO: Finish implementing this..
 	ExploitAvailable   interface{} `json:"exploit_available"`
