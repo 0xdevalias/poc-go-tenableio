@@ -4,8 +4,8 @@
 [[projects]]
   name = "github.com/go-resty/resty"
   packages = ["."]
-  revision = "f8815663de1e64d57cdd4ee9e2b2fa96977a030e"
-  version = "v1.4"
+  revision = "fc3ad735b5565cada42d34bc298573fd3fe5adc6"
+  version = "v1.6"
 
 [[projects]]
   branch = "master"
@@ -40,6 +40,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "09268f72c2d2fb7b24aa4f9226cf0921d164a99475b560c7c4518121006320c8"
+  inputs-digest = "c9dfdf4f5ff8fd5c483366430607929546e83f6d0bb3f7487fc1cc502993239b"
   solver-name = "gps-cdcl"
   solver-version = 1

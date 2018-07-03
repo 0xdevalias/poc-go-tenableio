@@ -4,4 +4,4 @@
 
 [[constraint]]
   name = "github.com/go-resty/resty"
-  version = "1.4.0"
+  version = "1.6.0"
