@@ -104,7 +104,7 @@ type Vulnerability struct {
 type VulnerabilityInfo struct {
 	Description              string                   `json:"description"`
 	Discovery                interface{}              `json:"discovery"`
-	PluginDetails            interface{}              `json:"plugin_details"`
+	PluginDetails            map[string]interface{}   `json:"plugin_details"`
 	ReferenceInformation     interface{}              `json:"reference_information"`
 	RiskInformation          interface{}              `json:"risk_information"`
 	SeeAlso                  []interface{}            `json:"see_also"`
