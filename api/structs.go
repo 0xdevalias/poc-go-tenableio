@@ -105,6 +105,7 @@ type Vulnerability struct {
 // TODO: Finish the VulnerabilityInfo struct
 type VulnerabilityInfo struct {
 	Description              string                         `json:"description"`
+	Synopsis                 string                         `json:"synopsis"`
 	Discovery                interface{}                    `json:"discovery"`
 	PluginDetails            VulnerabilityInfoPluginDetails `json:"plugin_details"`
 	ReferenceInformation     interface{}                    `json:"reference_information"`
