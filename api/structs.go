@@ -117,7 +117,7 @@ type VulnerabilityInfo struct {
 type VulnerabilityInfoPluginDetails struct {
 	Name             string     `json:"name"`
 	FamilyName       string     `json:"family"`
-	Severity         string     `json:"severity"`
+	Severity         int        `json:"severity"`
 	Type             string     `json:"local"`
 	PublicationDate  *time.Time `json:"publication_date"`
 	ModificationDate *time.Time `json:"modification_date"`
