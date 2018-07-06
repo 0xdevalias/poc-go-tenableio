@@ -104,14 +104,24 @@ type Vulnerability struct {
 //   Ref: https://cloud.tenable.com/api#/resources/workbenches
 // TODO: Finish the VulnerabilityInfo struct
 type VulnerabilityInfo struct {
-	Description              string                   `json:"description"`
-	Discovery                interface{}              `json:"discovery"`
-	PluginDetails            map[string]interface{}   `json:"plugin_details"`
-	ReferenceInformation     interface{}              `json:"reference_information"`
-	RiskInformation          interface{}              `json:"risk_information"`
-	SeeAlso                  []interface{}            `json:"see_also"`
-	Solution                 string                   `json:"solution"`
-	VulnerabilityInformation VulnerabilityInformation `json:"vulnerability_information"`
+	Description              string                         `json:"description"`
+	Discovery                interface{}                    `json:"discovery"`
+	PluginDetails            VulnerabilityInfoPluginDetails `json:"plugin_details"`
+	ReferenceInformation     interface{}                    `json:"reference_information"`
+	RiskInformation          interface{}                    `json:"risk_information"`
+	SeeAlso                  []interface{}                  `json:"see_also"`
+	Solution                 string                         `json:"solution"`
+	VulnerabilityInformation VulnerabilityInformation       `json:"vulnerability_information"`
+}
+
+type VulnerabilityInfoPluginDetails struct {
+	Name             string     `json:"name"`
+	FamilyName       string     `json:"family"`
+	Severity         string     `json:"severity"`
+	Type             string     `json:"local"`
+	PublicationDate  *time.Time `json:"publication_date"`
+	ModificationDate *time.Time `json:"modification_date"`
+	Version          string     `json:"version"`
 }
 
 // vulnerability_info
