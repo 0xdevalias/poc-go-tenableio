@@ -5,7 +5,7 @@ import (
 )
 
 type AgentGroupRef struct {
-	ID   string `json:"id"`
+	ID   int    `json:"id"`
 	Name string `json:"name"`
 }
 
@@ -31,7 +31,7 @@ type AgentGroup struct {
 
 	Name string `json:"name"`
 
-	OwnerID   int `json:"owner_id"`
+	OwnerID   int    `json:"owner_id"`
 	OwnerUUID string `json:"owner_uuid"`
 	Owner     string `json:"owner"`
 	OwnerName string `json:"owner_name"`
@@ -49,8 +49,8 @@ type AgentGroup struct {
 func (c *AgentGroupsAPI) List(scannerID int) ([]AgentGroup, error) {
 	req := c.client.restyClient.R().
 		SetPathParams(map[string]string{
-		"scanner_id": strconv.FormatInt(int64(scannerID), 10),
-	}).SetResult(AgentGroups{})
+			"scanner_id": strconv.FormatInt(int64(scannerID), 10),
+		}).SetResult(AgentGroups{})
 
 	r, err := req.Get("/scanners/{scanner_id}/agent-groups")
 	if err != nil {
@@ -116,9 +116,9 @@ func (c *AgentGroupsAPI) Configure(scannerID int, groupID int, groupName string)
 func (c *AgentGroupsAPI) Details(scannerID int, groupID int) (*AgentGroup, error) {
 	req := c.client.restyClient.R().
 		SetPathParams(map[string]string{
-		"scanner_id": strconv.FormatInt(int64(scannerID), 10),
-		"group_id":   strconv.FormatInt(int64(groupID), 10),
-	}).SetResult(AgentGroup{})
+			"scanner_id": strconv.FormatInt(int64(scannerID), 10),
+			"group_id":   strconv.FormatInt(int64(groupID), 10),
+		}).SetResult(AgentGroup{})
 
 	// TODO: Implement filtering/etc optional query params
 
@@ -140,9 +140,9 @@ func (c *AgentGroupsAPI) Details(scannerID int, groupID int) (*AgentGroup, error
 func (c *AgentGroupsAPI) Delete(scannerID int, groupID int) (bool, error) {
 	req := c.client.restyClient.R().
 		SetPathParams(map[string]string{
-		"scanner_id": strconv.FormatInt(int64(scannerID), 10),
-		"group_id":   strconv.FormatInt(int64(groupID), 10),
-	})
+			"scanner_id": strconv.FormatInt(int64(scannerID), 10),
+			"group_id":   strconv.FormatInt(int64(groupID), 10),
+		})
 
 	r, err := req.Delete("/scanners/{scanner_id}/agent-groups/{group_id}")
 	if err != nil {

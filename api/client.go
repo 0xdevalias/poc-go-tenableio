@@ -13,10 +13,13 @@ const (
 type Client struct {
 	restyClient *resty.Client
 
+	Agents      *AgentsAPI
 	AgentGroups *AgentGroupsAPI
 	Plugins     *PluginsAPI
 	Workbenches *WorkbenchesAPI
 }
+
+type AgentsAPI struct{ client *Client }
 
 type AgentGroupsAPI struct{ client *Client }
 
@@ -34,6 +37,7 @@ func DefaultClient(accessKey string, secretKey string) *Client {
 	c.SetHeader("X-ApiKeys", fmt.Sprintf("accessKey=%s; secretKey=%s", accessKey, secretKey))
 
 	client := Client{restyClient: c}
+	client.Agents = &AgentsAPI{client: &client}
 	client.AgentGroups = &AgentGroupsAPI{client: &client}
 	client.Plugins = &PluginsAPI{client: &client}
 	client.Workbenches = &WorkbenchesAPI{client: &client}
