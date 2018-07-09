@@ -36,7 +36,8 @@ type AgentGroup struct {
 	Owner     string `json:"owner"`
 	OwnerName string `json:"owner_name"`
 
-	Agents []Agent `json:"agents"`
+	AgentsCount int     `json:"agents_count"`
+	Agents      []Agent `json:"agents"`
 
 	Pagination Pagination `json:"pagination"`
 
