@@ -2,12 +2,6 @@ package api
 
 import "time"
 
-type Filter struct {
-	Filter  string `json:"filter"`
-	Quality string `json:"quality"`
-	Value   string `json:"value"`
-}
-
 // Ref: https://cloud.tenable.com/api#/resources/plugins
 type PluginFamilies struct {
 	Families []PluginFamily `json:"families"`
