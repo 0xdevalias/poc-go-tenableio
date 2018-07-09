@@ -161,3 +161,39 @@ type Source struct {
 	FirstSeen string `json:"first_seen"`
 	LastSeen  string `json:"last_seen"`
 }
+
+// Ref: https://cloud.tenable.com/api#/resources/filters
+type Pagination struct {
+	Total  int    `json:"total"`
+	Offset int    `json:"offset"`
+	Limit  int    `json:"limit"`
+	Sort   []Sort `json:"sort"`
+}
+
+// Ref: https://cloud.tenable.com/api#/resources/filters
+type Sort struct {
+	Name  string `json:"name"`
+	Order string `json:"order"`
+}
+
+// The details of an agent connected to a scanner.
+// Ref: https://cloud.tenable.com/api#/resources/agents
+type Agent struct {
+	ID   int    `json:"id"`
+	UUID string `json:"uuid"`
+
+	LinkedOn     int    `json:"linked_on"`
+	LastConnect  int    `json:"last_connect"`
+	LastScanned  int    `json:"last_scanned"`
+	PluginFeedID string `json:"plugin_feed_id"`
+
+	CoreBuild   string `json:"core_build"`
+	CoreVersion string `json:"core_version"`
+
+	Name     string          `json:"name"`
+	Distro   string          `json:"distro"`
+	Platform string          `json:"platform"`
+	IP       string          `json:"ip"`
+	Status   string          `json:"status"`
+	Groups   []AgentGroupRef `json:"groups"`
+}
