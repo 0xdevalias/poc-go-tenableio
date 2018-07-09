@@ -113,14 +113,17 @@ func (c *AgentGroupsAPI) Configure(scannerID int, groupID int, groupName string)
 // Agent records which belong to this group will also be returned.
 // You can apply filtering, sorting, or pagination to the agent records.
 //   Ref: https://cloud.tenable.com/api#/resources/agent-groups/details
-func (c *AgentGroupsAPI) Details(scannerID int, groupID int) (*AgentGroup, error) {
+func (c *AgentGroupsAPI) Details(scannerID int, groupID int, opts ...FilterConfigShort) (*AgentGroup, error) {
 	req := c.client.restyClient.R().
 		SetPathParams(map[string]string{
 			"scanner_id": strconv.FormatInt(int64(scannerID), 10),
 			"group_id":   strconv.FormatInt(int64(groupID), 10),
 		}).SetResult(AgentGroup{})
 
-	// TODO: Implement filtering/etc optional query params
+	// Apply optional filters
+	for _, opt := range opts {
+		req = opt(req)
+	}
 
 	r, err := req.Get("/scanners/{scanner_id}/agent-groups/{group_id}")
 	if err != nil {

@@ -9,11 +9,16 @@ type AgentsList struct {
 
 // List returns the agent list for the given scanner.
 //   Ref: https://cloud.tenable.com/api#/resources/agents/list
-func (c *AgentsAPI) List(scannerID int) (*AgentsList, error) {
+func (c *AgentsAPI) List(scannerID int, opts ...FilterConfigShort) (*AgentsList, error) {
 	req := c.client.restyClient.R().
 		SetPathParams(map[string]string{
 			"scanner_id": strconv.FormatInt(int64(scannerID), 10),
 		}).SetResult(AgentsList{})
+
+	// Apply optional filters
+	for _, opt := range opts {
+		req = opt(req)
+	}
 
 	r, err := req.Get("/scanners/{scanner_id}/agents")
 	if err != nil {
